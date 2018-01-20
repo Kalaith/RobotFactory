@@ -28,6 +28,9 @@ public class PlayerController : MonoBehaviour {
 		pgo.AddComponent<SpriteRenderer> ();
 		pgo.GetComponent<SpriteRenderer> ().sprite = p_sprite;
 		pgo.GetComponent<SpriteRenderer> ().sortingOrder = 10;
+
+        pgo.name = "Player";
+        pgo.tag = "Player";
 	}
 	
 	// Update is called once per frame
@@ -38,4 +41,10 @@ public class PlayerController : MonoBehaviour {
 			Camera.main.transform.position = new Vector3 (pos.X, pos.Y, Camera.main.transform.position.z);
 		}
 	}
+
+
+    public void movePlayer()
+    {
+        player.movePlayer();
+    }
 }

@@ -21,7 +21,7 @@ public class Map {
 		for (int i = 0; i < mapX; i++) {
 			for (int j = 0; j < mapY; j++) {
 				if (i == 0 || j == 0 || i + 1 == mapX || j + 1 == mapY) {
-					map [i, j] = new MapTile (i, j, TileType.WALL);
+					map [i, j] = new MapTile (i, j, TileType.WALL, true);
 				} else {
 					map [i, j] = new MapTile (i, j);
 				}
@@ -34,7 +34,13 @@ public class Map {
 		return map [(int)x, (int)y];
 	}
 
-	MapTile[] getTileNeighbours (pointf pos, bool diag = false) {
+    public MapTile getTile(pointf coords)
+    {
+        // should add a check to make sure a tile exists at this location, else reurn null
+        return map[(int)coords.X, (int)coords.Y];
+    }
+
+    MapTile[] getTileNeighbours (pointf pos, bool diag = false) {
 		MapTile[] neighbours;
 
 		if (diag) {

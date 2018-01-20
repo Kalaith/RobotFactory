@@ -12,8 +12,21 @@ public class MapController : MonoBehaviour {
 
 	private GameObject[,] goMap;
 
-	// Use this for initialization
-	void Start () {
+    public Map Map
+    {
+        get
+        {
+            return map;
+        }
+
+        set
+        {
+            map = value;
+        }
+    }
+
+    // Use this for initialization
+    void Start () {
 		map = new Map ();
 		map.initTestMap (mapSizeX, mapSizeY);
 		goMap = new GameObject[mapSizeX, mapSizeY];

@@ -33,7 +33,25 @@ public class pointf {
 		return new pointf (p1.X + p2.X, p1.Y + p2.Y);
 	}
 
-	public override string ToString() {
+    public static bool operator ==(pointf p1, pointf p2)
+    {
+        if((int)p1.X == (int)p2.X && (int)p1.Y == (int)p2.Y)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public static bool operator !=(pointf p1, pointf p2)
+    {
+        if ((int)p1.X == (int)p2.X && (int)p1.Y == (int)p2.Y)
+        {
+            return false;
+        }
+        return true;
+    }
+
+    public override string ToString() {
 		return x + ":" + y;
 	}
 }
