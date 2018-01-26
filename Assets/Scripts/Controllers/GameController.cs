@@ -13,6 +13,7 @@ public class GameController : MonoBehaviour {
         player = (PlayerController)FindObjectOfType(typeof(PlayerController));
         map = (MapController)FindObjectOfType(typeof(MapController));
         npcs = (NPCController)FindObjectOfType(typeof(NPCController));
+
     }
 	
 	// Update is called once per frame

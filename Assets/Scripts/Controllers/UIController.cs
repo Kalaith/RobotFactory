@@ -11,6 +11,8 @@ public class UIController : MonoBehaviour {
     GameObject gameText;
     public Sprite dialogBackground;
 
+    Robot[] robots;
+
     public GameObject Canvas
     {
         get
@@ -56,6 +58,13 @@ public class UIController : MonoBehaviour {
         canvas.layer = 5;
 
         canvas.SetActive(false);
+
+        // temp code to display robots in ui.
+        for (int i = 0; i == 3; i++)
+        {
+            robots[0] = new Robot(0, 0, "Robot" + i);
+        }
+
     }
 
     public void setText(string talk)
