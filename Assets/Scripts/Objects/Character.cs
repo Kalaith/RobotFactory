@@ -5,29 +5,24 @@ public class Character
 {
 
     pointf pos;
-    pointf speed;
-    bool interactable;
+    pointf acceleration;
+	float speed;
+	bool interactable;
     string talk;
+	Inventory inventory;
 
-    public bool Interactable
-    {
-        get
-        {
-            return interactable;
-        }
+	public Inventory Inventory { get { return inventory; } set { inventory = value; } }
 
-        set
-        {
-            interactable = value;
-        }
-    }
+    public bool Interactable { get { return interactable; } set { interactable = value; } }
+	public string Talk { get { return talk; } set { talk = value; } }
+	public float Speed { get { return speed; } set { speed = value; } }
 
-    public string Talk { get { return talk; } set { talk = value; } }
-
-    public Character(float x, float y, bool inter = false)
+    public Character(float x, float y, int s = 2, bool inter = false)
     {
         setPosition(x, y);
-        setSpeed(new pointf(0, 0));
+        setAcceleration(new pointf(0, 0));
+		speed = s;
+		inventory = new Inventory ();
     }
 
     public pointf getPosition()
@@ -40,19 +35,19 @@ public class Character
         pos = new pointf(x, y);
     }
 
-    public pointf getSpeed()
+    public pointf getAcceleration()
     {
-        return speed;
+        return acceleration;
     }
 
-    public void setSpeed(pointf s)
+    public void setAcceleration(pointf a)
     {
-        speed = s;
+        acceleration = a;
     }
 
-    public void moveCharacter()
+	public void moveCharacter(float delta)
     {
-        pos = pos + speed;
+		pos = pos + (acceleration*delta);
     }
 
 }

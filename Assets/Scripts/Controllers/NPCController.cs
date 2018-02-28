@@ -68,7 +68,7 @@ public class NPCController : MonoBehaviour
     {
         for (int i = 0; i < npc.Length; i++)
         {
-            npc[i].moveCharacter();
+			npc[i].moveCharacter(Time.deltaTime);
         }
     }
 }

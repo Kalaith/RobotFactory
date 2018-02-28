@@ -43,8 +43,8 @@ public class PlayerController : MonoBehaviour {
 	}
 
 
-    public void movePlayer()
+	public void movePlayer(float delta)
     {
-        player.movePlayer();
+        player.movePlayer(delta);
     }
 }

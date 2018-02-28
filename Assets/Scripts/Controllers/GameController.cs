@@ -19,11 +19,11 @@ public class GameController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        MapTile m = map.Map.getTile(player.Player.getPosition() + player.Player.getSpeed());
+		MapTile m = map.Map.getTile(player.Player.getPosition() + (player.Player.getAcceleration()*Time.deltaTime));
         if(m.Collidable==false)
         {
-            player.movePlayer();
-            player.Player.setSpeed(new pointf(0, 0));
+			player.movePlayer(Time.deltaTime);
+            player.Player.setAcceleration(new pointf(0, 0));
         }
 
 	}

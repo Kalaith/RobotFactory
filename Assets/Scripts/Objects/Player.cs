@@ -7,9 +7,9 @@ public class Player  : Character {
 
 	}
 
-    public void movePlayer()
+	public void movePlayer(float delta)
     {
-        moveCharacter();
+        moveCharacter(delta);
     }
 
 }

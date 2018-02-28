@@ -29,6 +29,10 @@ public class pointf {
 		Y = y;
 	}
 
+	public static pointf operator *(pointf p1, float p2) {
+		return new pointf (p1.X * p2, p1.Y * p2);
+	}
+
 	public static pointf operator +(pointf p1, pointf p2) {
 		return new pointf (p1.X + p2.X, p1.Y + p2.Y);
 	}

@@ -16,66 +16,50 @@ public class KeyboardController : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-		if (Input.GetKey("w")) {
-			pc.Player.setSpeed(new pointf(0, 0.1f));
+		if (Input.GetKey("w") || Input.GetKey("up")) {
+			pc.Player.setAcceleration(new pointf(0, pc.Player.Speed));
+			ui.Canvas.SetActive(false);
 		}
-		if (Input.GetKey("s")) {
-			pc.Player.setSpeed(new pointf(0, -0.1f));
+		if (Input.GetKey("s") || Input.GetKey("down")) {
+			pc.Player.setAcceleration(new pointf(0, -pc.Player.Speed));
+			ui.Canvas.SetActive(false);
 		}
-		if (Input.GetKey("d")) {
-			pc.Player.setSpeed(new pointf(0.1f, 0));
+		if (Input.GetKey("d") || Input.GetKey("right")) {
+			pc.Player.setAcceleration(new pointf(pc.Player.Speed, 0));
+			ui.Canvas.SetActive(false);
 		}
-		if (Input.GetKey("a")) {
-			pc.Player.setSpeed(new pointf(-0.1f, 0));
+		if (Input.GetKey("a") || Input.GetKey("left")) {
+			pc.Player.setAcceleration(new pointf(-pc.Player.Speed, 0));
+			ui.Canvas.SetActive(false);
 		}
 
-        if(Input.GetKey("i")) {
-            pointf pos = pc.Player.getPosition();
-            bool matches = false;
-            foreach (Character npc in npcs.Character)
-            {
-                //Debug.Log("Test Player: "+pos.X+"|"+pos.Y);
-                // Test if th player is touching any NPC's
-                if (pos == npc.getPosition())
-                {
-                    if (npc.Interactable == true)
-                    {
-                        ui.Canvas.SetActive(true);
 
-                        // Talk trash
-                        string ramble = "";
-                                                
-                        int lines = Random.Range(1, 5);
-                        for (int i = 0; i < lines; i++)
-                        {
-                            int words = Random.Range(1, 20);
-                            for (int j = 0; j < words; j++)
-                            {
-                                int letters = Random.Range(1, 10);
-                                for (int k = 0; k < letters; k++)
-                                {
-                                    char numToChar = (char)Random.Range(65, 90);
-                                    ramble += numToChar.ToString();
-                                }
-                                if (j == words) {
-                                    ramble += ".";
-                                } else
-                                {
-                                    ramble += " ";
-                                }
-                            }
-                            ramble += "\n";
-                            
-                        }
-                        ui.setText(npc.Talk+"\n"+ramble);
-                        matches = true;
-                    }
-                }
-            }
-            if(matches==false)
-            {
-                ui.Canvas.SetActive(false);
-            }
+        if(Input.GetKeyDown("i")) {
+
+			if (ui.Canvas.activeInHierarchy) {
+				ui.Canvas.SetActive (false);
+
+			} else {
+				pointf pos = pc.Player.getPosition ();
+				bool matches = false;
+				foreach (Character npc in npcs.Character) {
+					//Debug.Log("Test Player: "+pos.X+"|"+pos.Y);
+					// Test if th player is touching any NPC's
+					if (pos == npc.getPosition ()) {
+						if (npc.Interactable == true) {
+							ui.Canvas.SetActive (true);
+
+
+
+							ui.setText (npc.Talk + "\n" + TextGen.ramble());
+							matches = true;
+						}
+					}
+				}
+				if (matches == false) {
+					ui.Canvas.SetActive (false);
+				}
+			}
         }
 	}
 }
