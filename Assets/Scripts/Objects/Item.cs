@@ -17,9 +17,10 @@ public class Item {
 		if (item.ContainsKey (key)) {
 			return item [key];
 		}
+        return "";
 	}
 
-	Dictionary<string, string> addItemAttribute(string key, string value) {
+	void addItemAttribute(string key, string value) {
 		item.Add(key, value);
 	}
 

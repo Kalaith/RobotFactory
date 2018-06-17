@@ -73,7 +73,7 @@ public class UIController : MonoBehaviour {
         {
             gameText = new GameObject();
             gameText.AddComponent<Text>();
-            gameText.AddComponent<RectTransform>();
+            //gameText.AddComponent<RectTransform>();
             gameText.GetComponent<RectTransform>().sizeDelta = new Vector2(200, 100);
             gameText.GetComponent<RectTransform>().transform.position = new Vector3(0, 0, 0);
             gameText.transform.SetParent(dialog.transform);

@@ -1,12 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-
 
 // Characters and items in the case of chests or terminals are able to hold a collection of items.
-public class Inventory : MonoBehaviour {
+public class Inventory {
 
-	List<item> items = new List<item>();
+	List<Item> items = new List<Item>();
 
 	void addItem(Item item) {
 		items.Add (item);
